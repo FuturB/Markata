@@ -32,7 +32,7 @@ public class ApplicationConfig {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());
-        authProvider.setFa
+      //  authProvider.setFa
 //        System.out.println();
         return authProvider;
     }
