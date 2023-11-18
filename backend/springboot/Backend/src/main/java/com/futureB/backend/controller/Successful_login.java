@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 public class Successful_login {
     @GetMapping("/success")
     public ResponseEntity<String> success() {
+
         return ResponseEntity.status(200).body("Successful Login");
     }
 }
