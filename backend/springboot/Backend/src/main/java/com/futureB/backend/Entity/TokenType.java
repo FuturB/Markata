@@ -1,2 +1,5 @@
-package com.futureB.backend.Entity;public enum TokenType {
+package com.futureB.backend.Entity;
+
+public enum TokenType {
+    BEARER
 }

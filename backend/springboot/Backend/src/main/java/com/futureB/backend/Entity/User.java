@@ -37,6 +37,9 @@ public class User implements UserDetails {
 	@Column(name = "date")
 	private String date;
 
+	@OneToMany(mappedBy = "user")
+	private List<Token> tokens;
+
 	public Role getRole() {
 		return role;
 	}
