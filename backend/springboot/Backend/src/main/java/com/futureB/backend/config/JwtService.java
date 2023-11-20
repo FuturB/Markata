@@ -21,6 +21,7 @@ public class JwtService {
     private static final String SECRET_KEY="5A7134743777397A24432646294A404E635266556A586E3272357538782F4125";
 
     public String extractUsername(String token) {
+
         return extractClaim(token, Claims::getSubject);
     }
 
@@ -30,6 +31,7 @@ public class JwtService {
     }
 
     public String generateToken(UserDetails userDetails){
+
         return generateToken(new HashMap<>(), userDetails);
     }
 
@@ -53,10 +55,12 @@ public class JwtService {
     }
 
     private boolean isTokenExpired(String token) {
+
         return extractExpiration(token).before(new Date());
     }
 
     private Date extractExpiration(String token) {
+
         return extractClaim(token, Claims::getExpiration);
     }
 

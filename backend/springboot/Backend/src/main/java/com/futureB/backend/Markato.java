@@ -13,7 +13,7 @@ public class Markato {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Markato.class, args);
-
+System.out.println("Application is starting");
 	}
 
 //	@Bean
