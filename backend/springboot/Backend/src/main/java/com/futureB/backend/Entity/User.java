@@ -13,8 +13,8 @@ import java.util.List;
 public class User implements UserDetails {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
 	@Column(name = "first_name", nullable = false)
 	private String firstName;
@@ -36,6 +36,10 @@ public class User implements UserDetails {
 
 	@Column(name = "date")
 	private String date;
+	private boolean enabled = false;
+
+	@Enumerated(EnumType.STRING)
+	private Role role;
 
 	@OneToMany(mappedBy = "user")
 	private List<Token> tokens;
@@ -47,11 +51,6 @@ public class User implements UserDetails {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-
-	private boolean enabled = false;
-
-	@Enumerated(EnumType.STRING)
-	private Role role;
 
 	public User() {
 	}

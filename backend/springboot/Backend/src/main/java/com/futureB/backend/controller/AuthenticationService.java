@@ -22,9 +22,9 @@ public class AuthenticationService {
     private final TokenRepository tokenRepository;
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        System.out.println("Request: " + request);
+       // System.out.println("Request: " + request);
 //        request.setPassword(passwordEncoder.encode(request.getPassword()));
-        System.out.println("Request get: " + request.getEmailId() + " : " + request.getPassword());
+    //    System.out.println("Request get: " + request.getEmailId() + " : " + request.getPassword());
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmailId(),
@@ -46,6 +46,8 @@ public class AuthenticationService {
         tokenRepository.save(token);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
-                .build();
+                .build(); //this creates object of AuthenticationResponse with the value of jwtToken
+        //it is the same with the one below
+//        return new AuthenticationResponse(jwtToken);
     }
 }
