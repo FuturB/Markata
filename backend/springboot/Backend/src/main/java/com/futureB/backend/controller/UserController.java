@@ -39,10 +39,11 @@ public class UserController {
 	// get all Users
 	@GetMapping("/Users")
 	public List<User> getAllUsers(){
+
 		return userRepository.findAll();
 	}
 
-	//This is for getting the terms and co ditions from the database
+	//This is for getting the terms and conditions from the database
 	@GetMapping("/Terms/{id}")
 	public ResponseEntity<Terms> getTermsById(@PathVariable Long id){
 		System.out.println(id);
@@ -69,7 +70,8 @@ public class UserController {
 		// log
 		//System.out.println("\n" + User + "\n");
 		System.out.println(userRepository.findByEmailId(user.getEmailId()).isPresent());
-		if(!userRepository.findByEmailId(user.getEmailId()).isPresent()){
+		if(!userRepository.findByEmailId(user.getEmailId()).isPresent())
+		{
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			System.out.println("Password encryption during registration: " + user.getPassword());
 			user.setRole(Role.USER);

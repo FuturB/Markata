@@ -11,6 +11,7 @@ public class demo {
 
     @GetMapping
     public ResponseEntity<String> success(){
+
         return ResponseEntity.ok("Successful authentication using token.");
     }
 }
