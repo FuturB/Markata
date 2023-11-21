@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Markata.iml" filepath="$PROJECT_DIR$/.idea/Markata.iml" />
-      <module fileurl="file://$PROJECT_DIR$/backend/springboot/Backend/springboot-backend.iml" filepath="$PROJECT_DIR$/backend/springboot/Backend/springboot-backend.iml" />
     </modules>
   </component>
 </project>

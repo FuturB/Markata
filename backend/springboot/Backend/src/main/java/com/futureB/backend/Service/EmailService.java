@@ -15,7 +15,7 @@ public class EmailService {
     private final JavaMailSender javaMailSender;
 
 
-    public void sendActivationEmail(User recipent, ActivationToken activationToken){
+        public void sendActivationEmail(User recipent, ActivationToken activationToken){
         this.sendEmail(
                 recipent.getEmailId(),
                 "futurebproject@gmail.com",
