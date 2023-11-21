@@ -1,5 +1,6 @@
 package com.futureB.backend.config;
 
+import com.futureB.backend.repository.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +22,10 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     final JwtService jwtService;
+
     private final UserDetailsService userDetailsService;
+
+    private final TokenRepository tokenRepository;
 
 //    public JwtAuthenticationFilter(JwtService jwtService) {
 //        this.jwtService = jwtService;
@@ -47,8 +51,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             userEmail = jwtService.extractUsername(jwt); //todo extract the userEmail from JWT token;
             if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null){
                 UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
-                System.out.println("This is JwtAuthenticationFilter user details: " + userDetails);
-                if (jwtService.istokenValid(jwt, userDetails)){
+//                System.out.println("This is JwtAuthenticationFilter user details: " + userDetails);
+                var isTokenValid = tokenRepository.findByToken(jwt)
+                        .map(t -> !t.isExpired() && !t.isRevoked())
+                        .orElse(false);
+                if (jwtService.istokenValid(jwt, userDetails) && isTokenValid){
                     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                             userDetails,
                             null,

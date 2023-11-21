@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,8 +15,8 @@ public class EmailService {
 
     private final JavaMailSender javaMailSender;
 
-
-        public void sendActivationEmail(User recipent, ActivationToken activationToken){
+    @Async
+    public void sendActivationEmail(User recipent, ActivationToken activationToken){
         this.sendEmail(
                 recipent.getEmailId(),
                 "futurebproject@gmail.com",
@@ -28,6 +29,7 @@ public class EmailService {
         System.out.println("This is an activation token" + activationToken.getConfirmationToken());
     }
 
+    @Async
     public void sendEmail(String toEmail, String fromEmail, String subject, String body) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setTo(toEmail);
