@@ -4,6 +4,6 @@ const api = axios.create({
   baseURL: "http://localhost:8080",
 });
 
-const baseAPI = "http://localhost:8080";
+const baseAPI = "http://localhost:8080"
 export default api;
-export { baseAPI };
+export {baseAPI};
