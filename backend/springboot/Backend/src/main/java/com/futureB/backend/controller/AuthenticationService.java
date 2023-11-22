@@ -1,6 +1,9 @@
 package com.futureB.backend.controller;
 
+import com.futureB.backend.Entity.Token;
+import com.futureB.backend.Entity.TokenType;
 import com.futureB.backend.config.JwtService;
+import com.futureB.backend.repository.TokenRepository;
 import com.futureB.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,11 +19,12 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final TokenRepository tokenRepository;
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        System.out.println("Request: " + request);
+       // System.out.println("Request: " + request);
 //        request.setPassword(passwordEncoder.encode(request.getPassword()));
-        System.out.println("Request get: " + request.getEmailId() + " : " + request.getPassword());
+    //    System.out.println("Request get: " + request.getEmailId() + " : " + request.getPassword());
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmailId(),
@@ -32,8 +36,18 @@ public class AuthenticationService {
                 .orElseThrow();
         System.out.println("This is the user fetched from database by email" + user);
         var jwtToken = jwtService.generateToken(user);
+        var token = Token.builder()
+                .user(user)
+                .token(jwtToken)
+                .tokenType(TokenType.BEARER)
+                .revoked(false)
+                .expired(false)
+                .build();
+        tokenRepository.save(token);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
-                .build();
+                .build(); //this creates object of AuthenticationResponse with the value of jwtToken
+        //it is the same with the one below
+//        return new AuthenticationResponse(jwtToken);
     }
 }

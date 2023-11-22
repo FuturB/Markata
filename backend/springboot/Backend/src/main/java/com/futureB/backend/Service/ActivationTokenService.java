@@ -37,6 +37,7 @@ public class ActivationTokenService {
     }
 
     private ActivationToken tokenValid(String token) {
+
         return this.findToken(token);
     }
 
