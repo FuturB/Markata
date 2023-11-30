@@ -4,6 +4,8 @@ import com.futureB.backend.Entity.Product;
 import com.futureB.backend.Service.ProductService;
 import com.futureB.backend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +17,8 @@ import java.util.Optional;
 @RequestMapping("api/v1/")
 public class ProductController {
 
-//    @Autowired
-//    private ProductService productService;
+    @Autowired
+    private ProductService productService;
     @Autowired
     private ProductRepository productRepository;
 
@@ -75,6 +77,21 @@ public ResponseEntity<?> findProductById(@PathVariable Long productId) {
             String errorMessage = "Product not found";
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
         }
+    }
+
+    @GetMapping("/search-product")
+    public Page<Product> getYourEntities(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = true) String name
+    ) {
+        PageRequest pageable = PageRequest.of(page, size);
+        return productService.findBynameContainingIgnoreCase(name, pageable);
+    }
+
+    @GetMapping("/list-name-product")
+    public List<Product> listproduct(@RequestParam String name){
+        return productRepository.findBynameContainingIgnoreCase(name);
     }
 
 }
