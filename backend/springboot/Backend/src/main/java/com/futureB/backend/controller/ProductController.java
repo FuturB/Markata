@@ -3,6 +3,7 @@ package com.futureB.backend.controller;
 import com.futureB.backend.Entity.Product;
 import com.futureB.backend.Service.ProductService;
 import com.futureB.backend.repository.ProductRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/v1/")
+@RequestMapping("api/v2/")
 public class ProductController {
 
     @Autowired
@@ -89,10 +90,11 @@ public ResponseEntity<?> findProductById(@PathVariable Long productId) {
         return productService.findBynameContainingIgnoreCase(name, pageable);
     }
 
-    @GetMapping("/list-name-product")
-    public List<Product> listproduct(@RequestParam String name){
-        return productRepository.findBynameContainingIgnoreCase(name);
+    @GetMapping("/Current-user")
+    public String currentUser(HttpServletRequest request){
+        return productService.extractEmailId(request);
     }
+
 
 }
 

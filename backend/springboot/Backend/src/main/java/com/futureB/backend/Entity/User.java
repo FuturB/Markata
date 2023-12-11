@@ -1,15 +1,18 @@
 package com.futureB.backend.Entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import java.time.LocalDate;
 
 import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table(name = "User")
+@Data
 public class User implements UserDetails {
 	
 	@Id
@@ -36,6 +39,9 @@ public class User implements UserDetails {
 
 	@Column(name = "date")
 	private String date;
+
+	@Column(name = "DOB")
+	private LocalDate DOB;
 	private boolean enabled = false;
 
 	@Enumerated(EnumType.STRING)
@@ -64,6 +70,7 @@ public class User implements UserDetails {
 		this.year = year;
 		this.month = month;
 		this.date = date;
+		this.DOB = LocalDate.of(Integer.parseInt(year),Integer.parseInt(month),Integer.parseInt(date));
 	}
 
 	public long getId() {
@@ -171,9 +178,7 @@ public class User implements UserDetails {
 				", lastName='" + lastName + '\'' +
 				", emailId='" + emailId + '\'' +
 				", password='" + password + '\'' +
-				", year='" + year + '\'' +
-				", month='" + month + '\'' +
-				", date='" + date + '\'' +
+				", DOB='" + DOB + '\'' +
 				'}';
 	}
 }
