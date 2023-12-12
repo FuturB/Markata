@@ -1,6 +1,7 @@
 package com.futureB.backend.Entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "User")
+@Data
 public class User implements UserDetails {
 	
 	@Id
@@ -44,11 +46,15 @@ public class User implements UserDetails {
 	@Column(name= "Birth date")
 	private LocalDate DOB;
 
+
 	@Column(name= "enabled")
 	private boolean enabled = false;
 
 	@OneToMany(mappedBy = "user")
 	private List<Token> tokens;
+
+	@ManyToMany(mappedBy = "user")
+	private List<Address> address;
 
 	public Role getRole() {
 		return role;
@@ -67,6 +73,7 @@ public class User implements UserDetails {
 		this.lastName = lastName;
 		this.emailId = emailId;
 		this.password = password;
+
 //		this.year = year;
 //		this.month = month;
 //		this.date = date;

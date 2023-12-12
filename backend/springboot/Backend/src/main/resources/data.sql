@@ -1,28 +1,10 @@
 -- -- INSERT INTO product() VALUES (3, 'Sumsung S23', 'Electronics', 'Samsung S23 model 2023 made inn chin', 1200);
 --
 --
--- CREATE TABLE product (
---                          productId BIGINT AUTO_INCREMENT PRIMARY KEY NOT NULL,
---                          name VARCHAR(255) ,
---                          type VARCHAR(255),
---                          description VARCHAR(255),
---                          price DOUBLE
--- );
--- CREATE TABLE User (
---                       id BIGINT PRIMARY KEY,
---                       first_name VARCHAR(255) NOT NULL,
---                       last_name VARCHAR(255),
---                       email_id VARCHAR(255) UNIQUE NOT NULL,
---                       password VARCHAR(255) NOT NULL,
---                       year VARCHAR(4),
---                       month VARCHAR(255),
---                       date VARCHAR(2),
---                       enabled BOOLEAN NOT NULL,
---                       role VARCHAR(20) NOT NULL
--- );
+
 
 INSERT INTO product (name, type, description, price, quantity_in_stock) VALUES
--- ('samsung s23', 'Electronics', 'Smartphone with advanced features', 499.99, 100),
+('samsung s23', 'Electronics', 'Smartphone with advanced features', 499.99, 100),
  ('Airmax', 'Clothing', 'Mens casual t-shirt', 29.99, 50),
 ('coffee maker', 'Home Appliances', 'Coffee maker with built-in grinder', 149.99, 20),
 ('Sony Xperia 5 III', 'Electronics', 'High-end Android smartphone', 799.99, 30),
