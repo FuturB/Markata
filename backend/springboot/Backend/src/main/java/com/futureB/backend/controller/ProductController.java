@@ -15,15 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("api/v2/")
-public class ProductController {
-
-    @Autowired
-    private ProductService productService;
-    @Autowired
-    private ProductRepository productRepository;
-
 
 
 @RestController
@@ -78,7 +69,7 @@ public class ProductController {
                 return ResponseEntity.notFound().build();
             }
         }
-    }
+
 
 
     @GetMapping("/search-product")
