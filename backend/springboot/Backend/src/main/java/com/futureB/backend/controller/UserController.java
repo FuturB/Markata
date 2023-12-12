@@ -3,12 +3,15 @@ package com.futureB.backend.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import com.futureB.backend.DTO.userDTO;
 import com.futureB.backend.Entity.ActivationToken;
 import com.futureB.backend.Entity.Role;
 import com.futureB.backend.Entity.Terms;
 import com.futureB.backend.Service.ActivationTokenService;
 import com.futureB.backend.Service.EmailService;
+import com.futureB.backend.Service.UserService;
 import com.futureB.backend.config.JwtService;
 import com.futureB.backend.exception.ResourceNotFoundException;
 import com.futureB.backend.repository.TermsRepository;
@@ -29,7 +32,7 @@ public class UserController {
 
 	private final UserRepository userRepository;
 	private final TermsRepository termsRepository;
-
+	private final UserService userService;
 	private final PasswordEncoder passwordEncoder;
 	private final EmailService emailService;
 	private final ActivationTokenService activationTokenService;
@@ -38,9 +41,9 @@ public class UserController {
 
 	// get all Users
 	@GetMapping("/Users")
-	public List<User> getAllUsers(){
+	public List<userDTO> getAllUsers(){
 
-		return userRepository.findAll();
+		return userService.getAllUsers();
 	}
 
 	//This is for getting the terms and conditions from the database
@@ -98,6 +101,13 @@ public class UserController {
 			System.out.println("Activation result "+ activationTokenService.verifedAndAccountActivated(token));
 			return ResponseEntity.status(401).body("User Already Activated");
 		}
+	}
+
+	@GetMapping("/users/Product")
+	public ResponseEntity<?> findName(@RequestParam String name){
+		return ResponseEntity.status(200).body(userRepository.findByfirstNameIgnoreCaseContaining(name).stream()
+				.map(user -> user.getFirstName())
+				.collect(Collectors.toList()));
 	}
 	
 	// get User by id rest api

@@ -1,4 +1,4 @@
-package com.futureB.backend.Entity;
+package com.futureB.backend.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/testing")
-public class demo {
+public class Autherization_testing_demo {
 
     @GetMapping
     public ResponseEntity<String> success(){
