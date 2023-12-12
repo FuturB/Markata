@@ -3,6 +3,7 @@ package com.futureB.backend.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.futureB.backend.DTO.userDTO;
 import com.futureB.backend.Entity.ActivationToken;
@@ -100,6 +101,13 @@ public class UserController {
 			System.out.println("Activation result "+ activationTokenService.verifedAndAccountActivated(token));
 			return ResponseEntity.status(401).body("User Already Activated");
 		}
+	}
+
+	@GetMapping("/users/Product")
+	public ResponseEntity<?> findName(@RequestParam String name){
+		return ResponseEntity.status(200).body(userRepository.findByfirstNameIgnoreCaseContaining(name).stream()
+				.map(user -> user.getFirstName())
+				.collect(Collectors.toList()));
 	}
 	
 	// get User by id rest api

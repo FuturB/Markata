@@ -31,21 +31,24 @@ public class User implements UserDetails {
 	@Column(name = "password", nullable = false)
 	private String password;
 
-	@Column(name = "year")
-	private String year;
-
-	@Column(name = "month")
-	private String month;
-
-	@Column(name = "date")
-	private String date;
-
-	@Column(name = "DOB")
-	private LocalDate DOB;
-	private boolean enabled = false;
-
 	@Enumerated(EnumType.STRING)
 	private Role role;
+
+//	@Column(name = "year")
+//	private String year;
+//
+//	@Column(name = "month")
+//	private String month;
+//
+//	@Column(name = "date")
+//	private String date;
+
+	@Column(name= "Birth date")
+	private LocalDate DOB;
+
+
+	@Column(name= "enabled")
+	private boolean enabled = false;
 
 	@OneToMany(mappedBy = "user")
 	private List<Token> tokens;
@@ -70,9 +73,10 @@ public class User implements UserDetails {
 		this.lastName = lastName;
 		this.emailId = emailId;
 		this.password = password;
-		this.year = year;
-		this.month = month;
-		this.date = date;
+
+//		this.year = year;
+//		this.month = month;
+//		this.date = date;
 		this.DOB = LocalDate.of(Integer.parseInt(year),Integer.parseInt(month),Integer.parseInt(date));
 	}
 
@@ -141,29 +145,29 @@ public class User implements UserDetails {
 		this.password = password;
 	}
 
-	public String getYear() {
-		return year;
-	}
-
-	public void setYear(String year) {
-		this.year = year;
-	}
-
-	public String getMonth() {
-		return month;
-	}
-
-	public void setMonth(String month) {
-		this.month = month;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
+//	public String getYear() {
+//		return year;
+//	}
+//
+//	public void setYear(String year) {
+//		this.year = year;
+//	}
+//
+//	public String getMonth() {
+//		return month;
+//	}
+//
+//	public void setMonth(String month) {
+//		this.month = month;
+//	}
+//
+//	public String getDate() {
+//		return date;
+//	}
+//
+//	public void setDate(String date) {
+//		this.date = date;
+//	}
 
 	public boolean isEnabled() {
 		return enabled;
@@ -181,7 +185,7 @@ public class User implements UserDetails {
 				", lastName='" + lastName + '\'' +
 				", emailId='" + emailId + '\'' +
 				", password='" + password + '\'' +
-				", DOB='" + DOB + '\'' +
+				", DOB = " + DOB + '\'' +
 				'}';
 	}
 }
