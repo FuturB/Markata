@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.futureB.backend.DTO.userDTO;
+import com.futureB.backend.dtos.UserDTO;
 import com.futureB.backend.Entity.ActivationToken;
 import com.futureB.backend.Entity.Role;
 import com.futureB.backend.Entity.Terms;
@@ -16,6 +16,7 @@ import com.futureB.backend.config.JwtService;
 import com.futureB.backend.exception.ResourceNotFoundException;
 import com.futureB.backend.repository.TermsRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -31,6 +32,7 @@ import com.futureB.backend.repository.UserRepository;
 public class UserController {
 
 	private final UserRepository userRepository;
+	private final UserDTO userDTO;
 	private final TermsRepository termsRepository;
 	private final UserService userService;
 	private final PasswordEncoder passwordEncoder;
@@ -41,7 +43,7 @@ public class UserController {
 
 	// get all Users
 	@GetMapping("/Users")
-	public List<userDTO> getAllUsers(){
+	public List<UserDTO> getAllUsers(){
 
 		return userService.getAllUsers();
 	}

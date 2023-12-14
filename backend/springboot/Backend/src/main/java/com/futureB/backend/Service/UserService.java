@@ -1,6 +1,6 @@
 package com.futureB.backend.Service;
 
-import com.futureB.backend.DTO.userDTO;
+import com.futureB.backend.dtos.UserDTO;
 import com.futureB.backend.config.JwtService;
 import com.futureB.backend.Entity.User;
 import com.futureB.backend.repository.UserRepository;
@@ -28,15 +28,15 @@ public class UserService {
 
     }
 
-    public List<userDTO> getAllUsers(){
+    public List<UserDTO> getAllUsers(){
         return userRepository.findAll()
                 .stream()
                 .map(this::userToDTO)
                 .collect(Collectors.toList());
     }
 
-    public userDTO userToDTO(User user){
-        userDTO userDTO = new userDTO();
+    public UserDTO userToDTO(User user){
+        UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
         userDTO.setFirstName(user.getFirstName());
         userDTO.setLastName(user.getLastName());
