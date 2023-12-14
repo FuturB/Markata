@@ -1,7 +1,6 @@
 package com.futureB.backend.Service;
 
-import com.futureB.backend.DTO.userDTO;
-import com.futureB.backend.config.JwtService;
+import com.futureB.backend.dtos.userDTO;
 import com.futureB.backend.Entity.User;
 import com.futureB.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

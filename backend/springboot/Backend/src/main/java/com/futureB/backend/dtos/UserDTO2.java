@@ -8,7 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class UserDTO {
+public class UserDTO2 {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

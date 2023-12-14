@@ -1,11 +1,9 @@
 package com.futureB.backend.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.futureB.backend.DTO.userDTO;
+import com.futureB.backend.dtos.userDTO;
 import com.futureB.backend.Entity.ActivationToken;
 import com.futureB.backend.Entity.Role;
 import com.futureB.backend.Entity.Terms;
@@ -13,12 +11,9 @@ import com.futureB.backend.Service.ActivationTokenService;
 import com.futureB.backend.Service.EmailService;
 import com.futureB.backend.Service.UserService;
 import com.futureB.backend.config.JwtService;
-import com.futureB.backend.exception.ResourceNotFoundException;
 import com.futureB.backend.repository.TermsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import com.futureB.backend.Entity.User;
