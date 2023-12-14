@@ -1,4 +1,4 @@
-package com.futureB.backend.DTO;
+package com.futureB.backend.dtos;
 import lombok.Data;
 
 

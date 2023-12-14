@@ -1,8 +1,6 @@
 package com.futureB.backend.Entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.futureB.backend.dtos.UserDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
