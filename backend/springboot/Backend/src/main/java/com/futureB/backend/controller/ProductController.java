@@ -20,15 +20,8 @@ import java.util.Optional;
 public class ProductController {
 
     @Autowired
-    private ProductService productService;
-    @Autowired
     private ProductRepository productRepository;
 
-
-
-@RestController
-@RequestMapping("api/v1/product")
-    public class ProductController {
 
         private final ProductService productService;
 
@@ -78,7 +71,7 @@ public class ProductController {
                 return ResponseEntity.notFound().build();
             }
         }
-    }
+
 
 
     @GetMapping("/search-product")
