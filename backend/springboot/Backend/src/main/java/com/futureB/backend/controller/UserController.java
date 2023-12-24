@@ -32,7 +32,6 @@ import com.futureB.backend.repository.UserRepository;
 public class UserController {
 
 	private final UserRepository userRepository;
-	private final UserDTO userDTO;
 	private final TermsRepository termsRepository;
 	private final UserService userService;
 	private final PasswordEncoder passwordEncoder;

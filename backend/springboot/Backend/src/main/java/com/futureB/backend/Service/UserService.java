@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+
     public User activateUser(User user) {
         Optional<User> userInDB = userRepository.findByEmailId(user.getEmailId());
         if(userInDB.isPresent()){
