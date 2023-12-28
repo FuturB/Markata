@@ -1,10 +1,17 @@
 package com.futureB.backend.dtos;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PaymentDTO {
 
-
+    private String name;
+    private String email;
     private Double amount;
     private String currency;
     private String type;

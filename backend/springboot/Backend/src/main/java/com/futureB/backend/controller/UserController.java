@@ -79,6 +79,7 @@ public class UserController {
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			System.out.println("Password encryption during registration: " + user.getPassword());
 			user.setRole(Role.USER);
+			user.setDOB();
 			User userInDB = userRepository.save(user);
 			var jwtToken = jwtService.generateToken(userInDB);
 			ActivationToken activationToken = activationTokenService.createAndPersistActivationToken(userInDB);

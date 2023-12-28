@@ -34,14 +34,14 @@ public class User implements UserDetails {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
-//	@Column(name = "year")
-//	private String year;
-//
-//	@Column(name = "month")
-//	private String month;
-//
-//	@Column(name = "date")
-//	private String date;
+	@Column(name = "year")
+	private String year;
+
+	@Column(name = "month")
+	private String month;
+
+	@Column(name = "date")
+	private String date;
 
 	@Column(name= "Birth date")
 	private LocalDate DOB;
@@ -74,10 +74,12 @@ public class User implements UserDetails {
 		this.emailId = emailId;
 		this.password = password;
 
-//		this.year = year;
-//		this.month = month;
-//		this.date = date;
-		this.DOB = LocalDate.of(Integer.parseInt(year),Integer.parseInt(month),Integer.parseInt(date));
+		this.year = year;
+		this.month = month;
+		this.date = date;
+//		System.out.println("This is the date of birth" + LocalDate.of(Integer.parseInt(year),Integer.parseInt(month),Integer.parseInt(date)) + "\n");
+//		this.DOB = LocalDate.of(Integer.parseInt(year),Integer.parseInt(month),Integer.parseInt(date));
+//		System.out.println("This is the date of birth" + this.DOB + "\n");
 	}
 
 	public long getId() {
@@ -175,6 +177,10 @@ public class User implements UserDetails {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public void setDOB() {
+		this.DOB = LocalDate.of(Integer.parseInt(this.year),Integer.parseInt(this.month),Integer.parseInt(this.date));;
 	}
 
 	@Override

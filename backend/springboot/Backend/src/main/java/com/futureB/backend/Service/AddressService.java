@@ -28,8 +28,8 @@ public class AddressService {
         return addressDTO;
     }
 
-    public List<AddressDTO> addressToDTO(){
-        return addressRepository.findAll()
-                .stream()
-    }
+//    public List<AddressDTO> addressToDTO(){
+//        return addressRepository.findAll()
+//                .stream()
+//    }
 }
