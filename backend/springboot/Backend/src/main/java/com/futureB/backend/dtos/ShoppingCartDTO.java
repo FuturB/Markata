@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 public class ShoppingCartDTO {
     private Long cartId;
-    private UserDTO user;
+    private UserDTO2 user;
     private List<CartItemDTO> cartItems;
     private String totalPrice;
 
