@@ -17,6 +17,6 @@ public class Terms {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
-    @Column(name = "Terms")
+    @Column(name = "Terms", columnDefinition = "TEXT")
     private String terms;
 }

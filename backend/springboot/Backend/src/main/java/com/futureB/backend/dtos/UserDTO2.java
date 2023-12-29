@@ -1,19 +1,19 @@
 package com.futureB.backend.dtos;
 
 import lombok.*;
+import org.springframework.stereotype.Component;
 
-//@Service
+import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @ToString
-public class UserDTO2 {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+public class UserDTO {
     private Long id;
     private String firstName;
+    private String lastName;
+    private  String emailId;
+    private LocalDate DOB;
 
-    // Constructors, getters, and setters
+
 }
-

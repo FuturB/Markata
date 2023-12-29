@@ -3,7 +3,7 @@ package com.futureB.backend.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.futureB.backend.dtos.userDTO;
+import com.futureB.backend.dtos.UserDTO;
 import com.futureB.backend.Entity.ActivationToken;
 import com.futureB.backend.Entity.Role;
 import com.futureB.backend.Entity.Terms;
@@ -13,6 +13,7 @@ import com.futureB.backend.Service.UserService;
 import com.futureB.backend.config.JwtService;
 import com.futureB.backend.repository.TermsRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -36,7 +37,7 @@ public class UserController {
 
 	// get all Users
 	@GetMapping("/Users")
-	public List<userDTO> getAllUsers(){
+	public List<UserDTO> getAllUsers(){
 
 		return userService.getAllUsers();
 	}
@@ -73,6 +74,7 @@ public class UserController {
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			System.out.println("Password encryption during registration: " + user.getPassword());
 			user.setRole(Role.USER);
+			user.setDOB();
 			User userInDB = userRepository.save(user);
 			var jwtToken = jwtService.generateToken(userInDB);
 			ActivationToken activationToken = activationTokenService.createAndPersistActivationToken(userInDB);

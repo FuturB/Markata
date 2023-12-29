@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-
-
 @RestController
-@RequestMapping("api/v1/product")
-    public class ProductController {
+@RequestMapping("api/v2/")
+public class ProductController {
+
+    @Autowired
+    private ProductRepository productRepository;
+
 
         private final ProductService productService;
 

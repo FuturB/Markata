@@ -1,6 +1,7 @@
 package com.futureB.backend;
 
 import com.futureB.backend.Entity.ShoppingCart;
+import com.futureB.backend.dtos.UserDTO;
 import com.futureB.backend.repository.ShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -39,5 +40,9 @@ System.out.println("Application is starting");
 //		return new BCryptPasswordEncoder();
 //	}
 
+	@Bean
+	public UserDTO userDTO(){
+		return new UserDTO();
+	}
 
 }
